@@ -107,46 +107,109 @@ export const memberSpotlights = [
 
 export const fallbackEvents: EventItem[] = [
   {
-    id: "11111111-1111-4111-8111-111111111111",
-    title: "Soldier Talks",
-    slug: "soldier-talks",
-    category: "Leadership Session",
+    id: "e1000000-0000-4000-8000-000000000001",
+    title: "The Journey That Inspires",
+    slug: "journey-that-inspires",
+    category: "Flagship / Membership Drive",
     date: "2026-07-15",
-    location: "Chandigarh University",
+    location: "AUDI, C-2",
     status: "upcoming",
     registration_status: "open",
     is_published: true,
-    capacity: 300,
+    capacity: 450,
     summary:
-      "A youth-focused conversation on leadership, discipline, patriotism, civic responsibility, and nation-building."
+      "A powerful real-life leadership and motivation session where students directly interact with distinguished personalities and learn from their journeys of discipline, resilience, service, leadership, and personal growth — inspiring freshers to begin their university life with confidence, purpose, and a growth mindset.",
+    description: "Through artistic poster designs and powerful slogans, participants will explore themes such as innovation, sustainability, women empowerment, digital transformation, rural development, cultural heritage, youth leadership, and inclusive growth. This event serves as a platform for students to express their ideas about India’s progress from multiple perspectives—social, economic, technological, and cultural."
   },
   {
-    id: "22222222-2222-4222-8222-222222222222",
-    title: "Bharat Leadership Circle",
-    slug: "bharat-leadership-circle",
-    category: "Discussion",
-    date: "2026-08-03",
-    location: "Seminar Hall",
+    id: "e2000000-0000-4000-8000-000000000002",
+    title: "Rashtraneeti",
+    slug: "rashtraneeti",
+    category: "Core / Competition",
+    date: "2026-08-15",
+    location: "Seminar Hall, C-3",
     status: "upcoming",
     registration_status: "open",
     is_published: true,
     capacity: 150,
     summary:
-      "A moderated student circle connecting Indian history, public service, communication, and modern leadership."
+      "A governance and policy simulation platform designed to engage students in parliamentary discussions, leadership roles, policy drafting, and decision-making processes through immersive debates and real-world national issues. The event promotes leadership, public speaking, critical thinking, diplomacy, and youth participation.",
+    description: "RASHTRANEETI is an immersive national governance and parliamentary simulation event where participants step into the roles of political leaders, ministers, opposition members, media representatives, and policy-makers to shape the future of India through debates, policymaking, crisis management, and strategic governance."
   },
   {
-    id: "33333333-3333-4333-8333-333333333333",
-    title: "Voyage Induction 2026",
-    slug: "voyage-induction-2026",
-    category: "Recruitment",
-    date: "2026-09-10",
-    location: "Main Campus Ground",
+    id: "e3000000-0000-4000-8000-000000000003",
+    title: "Viksit Bharat Ideathon 2026",
+    slug: "viksit-bharat-ideathon-2026",
+    category: "Core / Hackathon",
+    date: "2026-10-15",
+    location: "Lab 101, C-3",
     status: "upcoming",
     registration_status: "open",
     is_published: true,
-    capacity: null,
+    capacity: 150,
     summary:
-      "Meet the teams, understand the domains, and step into a club built around learning, leading, networking, and impact."
+      "An innovation-driven ideathon focused on generating impactful solutions for national development challenges aligned with the vision of Viksit Bharat 2047. The event encourages students to brainstorm, design, and present innovative ideas related to technology, sustainability, education, governance, and social impact.",
+    description: "The Viksit Bharat Ideathon 2026 will encourage students to develop innovative solutions and startup ideas addressing real-world challenges in areas such as education, sustainability, technology, healthcare, entrepreneurship, rural development, and digital transformation. Participants will work in teams to present impactful ideas aligned with the vision of a developed India."
+  },
+  {
+    id: "e4000000-0000-4000-8000-000000000004",
+    title: "English Beyond Grammar",
+    slug: "english-beyond-grammar",
+    category: "Regular / Workshop",
+    date: "2026-11-10",
+    location: "Seminar Hall, C-3",
+    status: "upcoming",
+    registration_status: "open",
+    is_published: true,
+    capacity: 80,
+    summary:
+      "A student-centered communication and expression initiative focused on developing practical English communication, confidence, fluency, and real-world interaction skills beyond traditional grammar learning. Through roleplays, speaking activities, conversation zones, storytelling, and interactive sessions.",
+    description: "Beyond Grammar is an interactive communication-focused experience designed to help students build confidence, fluency, expression, and real-life communication skills through speaking activities, roleplays, conversation games, storytelling, theatre, and collaborative interaction."
+  },
+  {
+    id: "e5000000-0000-4000-8000-000000000005",
+    title: "Student Tank",
+    slug: "student-tank",
+    category: "Core / Competition",
+    date: "2027-01-15",
+    location: "Seminar Hall, C-3",
+    status: "upcoming",
+    registration_status: "open",
+    is_published: true,
+    capacity: 60,
+    summary:
+      "Student Tank provides a dynamic platform for students to transform innovative ideas into impactful solutions by combining entrepreneurship, creativity, strategic thinking, and real-world problem-solving. Participants gain valuable experience in pitching, leadership, teamwork, and receiving expert feedback.",
+    description: "Student Tank is an idea-pitching competition where students present innovative startup ideas, projects, or solutions to real-world challenges before a panel of judges. The event encourages entrepreneurship, creativity, leadership, and problem-solving skills."
+  },
+  {
+    id: "e6000000-0000-4000-8000-000000000006",
+    title: "National Youth Parliament Workshop & Competition",
+    slug: "national-youth-parliament",
+    category: "Flagship / Hackathon",
+    date: "2027-02-15",
+    location: "Moot Court Hall, B5",
+    status: "upcoming",
+    registration_status: "open",
+    is_published: true,
+    capacity: 80,
+    summary:
+      "A structured parliamentary training and competition initiative aimed at developing leadership, policy awareness, diplomacy, and communication skills among students through simulated parliamentary procedures, debates, and committee-based discussions.",
+    description: "The National Youth Parliament Event will consist of a one-day intensive orientation followed by a Youth Parliament competition on the second day. The orientation session will train participants in parliamentary procedures, diplomacy, policy drafting, public speaking, leadership, and national governance systems."
+  },
+  {
+    id: "e7000000-0000-4000-8000-000000000007",
+    title: "No Filter",
+    slug: "no-filter",
+    category: "Core / Awareness Camp",
+    date: "2027-03-15",
+    location: "Lab 101, C-3",
+    status: "upcoming",
+    registration_status: "open",
+    is_published: true,
+    capacity: 120,
+    summary:
+      "No Filter creates a safe and engaging space where students can openly share their thoughts, experiences, perspectives, and ideas on meaningful topics without fear of judgment. The event promotes authentic communication, confidence, critical thinking, self-expression, and constructive dialogue.",
+    description: "No Filter is an open-expression platform where students share their perspectives, experiences, opinions, and stories on contemporary issues, personal growth, leadership, and social topics in an authentic and unfiltered manner."
   }
 ];
 
