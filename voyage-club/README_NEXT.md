@@ -22,7 +22,7 @@ Open `http://localhost:3000`.
 2. Copy `.env.example` to `.env.local`.
 3. Fill in:
    - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
 4. Run `supabase/schema.sql` in the Supabase SQL editor.
 5. Create an auth user for the admin.
