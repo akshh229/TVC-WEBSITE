@@ -218,7 +218,102 @@ export const fallbackTeam: TeamMember[] = [
 ];
 
 export const fallbackGallery: GalleryItem[] = [
-  // Gallery records are intentionally empty until approved club media is uploaded.
+  {
+    id: "g1",
+    title: "Voyage Fest",
+    category: "Event",
+    media_url: "https://drive.google.com/uc?export=view&id=1VHS5FV_fNZwoFACY8O0vgfTL89whqt86",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g2",
+    title: "Sponsorship Event",
+    category: "Workshop",
+    media_url: "https://drive.google.com/uc?export=view&id=17UULjQjbkqhFrEBA9Tw6boGXK8ArEZMt",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g3",
+    title: "TVC Workshop",
+    category: "Workshop",
+    media_url: "https://drive.google.com/uc?export=view&id=1apr1R-GP6XKsXSN9kBTCG9yRJLiHP30D",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g4",
+    title: "Best Club Award",
+    category: "Award",
+    media_url: "https://drive.google.com/uc?export=view&id=1T-EBBWGsIB49eQaRPic-2p_MvL2txM9o",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g5",
+    title: "TVC Team",
+    category: "Team",
+    media_url: "https://drive.google.com/uc?export=view&id=15kF7LiBfFbz0lwdA6XpoGQ-Kpgt_kMU8",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g6",
+    title: "TVC Fest",
+    category: "Event",
+    media_url: "https://drive.google.com/uc?export=view&id=1ZBJyBGGC00HhuVas-qBIjD6swAaFOagB",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g7",
+    title: "TVC Event",
+    category: "Event",
+    media_url: "https://drive.google.com/uc?export=view&id=1loYVFN1_qgknYdrPYnugGaOpyvYG_vtq",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g8",
+    title: "TVC Workshop",
+    category: "Workshop",
+    media_url: "https://drive.google.com/uc?export=view&id=1CjfZz5nXRrjgRWMczYArw2XhyjJcf_hu",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g9",
+    title: "500 Members",
+    category: "Milestone",
+    media_url: "https://drive.google.com/uc?export=view&id=1nbAE4S0LiHKmk0xU4o3jAGT_J5E5plAT",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g10",
+    title: "TVC Event",
+    category: "Event",
+    media_url: "https://drive.google.com/uc?export=view&id=1RkSIKm2KqUKWiPnBg_OdqGxXf5LBbJXh",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g11",
+    title: "TVC Fest",
+    category: "Event",
+    media_url: "https://drive.google.com/uc?export=view&id=1fEzFxOb4yXi0a3IcJJhMBJ5UOqKLLcLf",
+    media_type: "image",
+    is_published: true
+  },
+  {
+    id: "g12",
+    title: "TVC Workshop",
+    category: "Workshop",
+    media_url: "https://drive.google.com/uc?export=view&id=1hZt0L0cLQv7bRs4rJHPT0I0CQ7GVXrGO",
+    media_type: "image",
+    is_published: true
+  }
 ];
 
 export const fallbackSponsors: Sponsor[] = [];
