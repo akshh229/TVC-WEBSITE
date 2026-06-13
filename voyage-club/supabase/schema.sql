@@ -1,0 +1,3 @@
+-- Compatibility entry point for manual Supabase SQL Editor setup.
+-- Apply supabase/migrations/202606130001_mvp_foundation.sql, then optionally
+-- apply supabase/seed.sql for local development data.

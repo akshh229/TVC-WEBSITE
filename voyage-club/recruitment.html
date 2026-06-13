@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recruitment — The Voyage Club</title>
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo"><div class="nav-logo-mark">TVC</div><div class="nav-logo-text"><span class="name">The Voyage Club</span><span class="sub">Student Leadership Org</span></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="team.html">Team</a>
+    <a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+    <a href="recruitment.html" class="active">Recruitment</a><a href="membership.html">Membership</a><a href="contact.html">Contact</a>
+  </div>
+  <a href="membership.html" class="btn btn-primary btn-sm nav-cta">Join Us</a>
+  <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="team.html">Team</a>
+  <a href="events.html">Events</a><a href="gallery.html">Gallery</a>
+  <a href="recruitment.html" class="active">Recruitment</a><a href="membership.html">Membership</a><a href="contact.html">Contact</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="tag tag-cyan">Applications Open</span>
+    <h1>Join Our <span style="background:linear-gradient(135deg,var(--cyan),var(--purple-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Team</span></h1>
+    <p>We're looking for passionate, driven individuals to join one of our 8 departments. No experience required — just a hunger to learn and lead.</p>
+    <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+      <a href="#domains" class="btn btn-primary btn-lg">View Open Roles</a>
+      <a href="#how-to-apply" class="btn btn-ghost btn-lg">How to Apply</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BANNER -->
+<section style="padding:0 0 60px;" class="reveal">
+  <div class="container">
+    <div class="recruit-stats-bar">
+      <div class="rs-stat"><span class="stat-number" style="font-size:2rem;" data-count="8" data-suffix="">8</span><span>Open Departments</span></div>
+      <div class="rs-divider"></div>
+      <div class="rs-stat"><span class="stat-number" style="font-size:2rem;" data-count="50" data-suffix="+">50+</span><span>Spots Available</span></div>
+      <div class="rs-divider"></div>
+      <div class="rs-stat"><span class="stat-number" style="font-size:2rem;" data-count="0" data-suffix="">Zero</span><span>Experience Required</span></div>
+      <div class="rs-divider"></div>
+      <div class="rs-stat"><span>📅</span><span>Deadline: August 30, 2026</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO APPLY -->
+<section id="how-to-apply" class="section-pad" style="background:var(--navy-2);">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="eyebrow">Process</div>
+      <h2>How to Apply</h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-circle cyan">1</div>
+        <div class="step-line"></div>
+        <h4>Browse Departments</h4>
+        <p>Explore the 8 departments below and find the one that matches your interests and skills.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle purple">2</div>
+        <div class="step-line"></div>
+        <h4>Submit Application</h4>
+        <p>Click "Apply Now" on your chosen department and fill in the application form.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle cyan">3</div>
+        <div class="step-line"></div>
+        <h4>Interview Round</h4>
+        <p>Shortlisted candidates are called for a brief informal interview or task round.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle purple">4</div>
+        <div class="step-line last"></div>
+        <h4>Welcome Aboard!</h4>
+        <p>Selected members receive their onboarding kit, team introduction, and their first assignment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section id="domains" class="section-pad">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="eyebrow">Open Roles</div>
+      <h2>Choose Your Domain</h2>
+      <p>Eight departments, each with a unique focus. Find where you fit and apply.</p>
+    </div>
+    <div class="domains-grid">
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap cyan"><span style="font-size:1.8rem;">📋</span></div>
+          <div><h3>Admin Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">The backbone of The Voyage Club. Admin ensures smooth operations, coordination, and institutional compliance across all departments.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>📊 Organization</span><span>📧 Communication</span><span>🗂️ Documentation</span><span>💻 MS Office</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Manage club correspondence and official documentation</li><li>Coordinate inter-department communications</li><li>Assist in scheduling and logistics of club activities</li><li>Maintain member records and databases</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">3–5 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Admin Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap purple"><span style="font-size:1.8rem;">🎨</span></div>
+          <div><h3>Graphic Design Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Shape the visual identity of TVC. From social media creatives to event posters, this team makes the club look world-class.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>🖼️ Adobe Suite / Canva</span><span>🎨 Visual Design</span><span>📐 Typography</span><span>📱 Social Media Design</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Design event posters, banners, and digital creatives</li><li>Maintain brand consistency across all platforms</li><li>Create social media content and stories</li><li>Design certificates and membership cards</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">4–6 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Graphic Design Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap cyan"><span style="font-size:1.8rem;">✍️</span></div>
+          <div><h3>Content Creation Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Tell our story. From blog posts and newsletters to captions and scripts, the content team gives TVC its voice.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>✏️ Creative Writing</span><span>📖 Copywriting</span><span>🎬 Video Scripting</span><span>📰 Blogging</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Write captions, posts, and articles for social media and website</li><li>Draft newsletters and internal club communications</li><li>Script and narrate videos and reels</li><li>Manage the club blog and publication calendar</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">3–4 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Content Creation Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap purple"><span style="font-size:1.8rem;">📣</span></div>
+          <div><h3>Marketing Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Grow our audience and amplify our reach. The marketing team runs campaigns that make TVC events and initiatives unmissable.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>📊 Digital Marketing</span><span>📈 Analytics</span><span>📱 Social Media</span><span>🎯 Campaign Planning</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Plan and execute marketing campaigns for events and recruitment</li><li>Manage Instagram, LinkedIn, and YouTube channels</li><li>Track engagement metrics and optimize strategies</li><li>Run paid promotions and outreach drives</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">3–5 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Marketing Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap cyan"><span style="font-size:1.8rem;">🤝</span></div>
+          <div><h3>Sponsorship & Outreach Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Build bridges between TVC and the corporate world. This team secures the partnerships and sponsorships that fuel our events and programs.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>💼 Networking</span><span>📧 Outreach</span><span>🗣️ Negotiation</span><span>📊 Proposal Writing</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Identify and reach out to potential sponsors and partners</li><li>Draft sponsorship proposals and partnership decks</li><li>Maintain sponsor relationships and deliverables</li><li>Represent TVC at external networking events</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">3–4 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Sponsorship & Outreach Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap purple"><span style="font-size:1.8rem;">⚙️</span></div>
+          <div><h3>Operations Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Make things happen on the ground. The operations team is the force behind flawless event execution and day-to-day club management.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>🧩 Problem Solving</span><span>⏱️ Time Management</span><span>📋 Planning</span><span>🤝 Teamwork</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Plan and manage event logistics end-to-end</li><li>Coordinate vendors, venues, and equipment</li><li>Manage on-ground volunteer teams during events</li><li>Oversee budgets and procurement for club activities</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">5–7 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Operations Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap cyan"><span style="font-size:1.8rem;">🏅</span></div>
+          <div><h3>Unit Leader Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Lead small groups of members. Unit leaders are the direct point of contact between the core team and general members, fostering community and growth.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>🎯 Leadership</span><span>💬 Communication</span><span>🤗 Empathy</span><span>🧭 Mentoring</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Guide and motivate a unit of 10–15 members</li><li>Act as a mentor and first point of contact for unit members</li><li>Ensure member engagement and participation in club activities</li><li>Report unit feedback and needs to the core team</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">5–8 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Unit Leader Team')">Apply Now</button></div>
+      </div>
+
+      <div class="domain-card reveal">
+        <div class="domain-card-header">
+          <div class="domain-icon-wrap purple"><span style="font-size:1.8rem;">🔬</span></div>
+          <div><h3>Research Team</h3><span class="badge badge-success">Recruiting</span></div>
+        </div>
+        <p class="domain-desc">Drive intellectual output. The research team produces case studies, white papers, and insights that establish TVC as a thought-leadership platform.</p>
+        <div class="domain-section"><h5>Skills Required</h5><div class="skill-chips"><span>📚 Research Aptitude</span><span>📝 Academic Writing</span><span>🔍 Analysis</span><span>📊 Data Interpretation</span></div></div>
+        <div class="domain-section"><h5>Responsibilities</h5><ul class="domain-list"><li>Conduct research on entrepreneurship, leadership, and innovation topics</li><li>Write and publish articles, case studies, and newsletters</li><li>Support event teams with data-backed insights and content</li><li>Collaborate on grant applications and academic partnerships</li></ul></div>
+        <div class="domain-footer"><span class="badge badge-cyan">3–4 Openings</span><button class="btn btn-primary btn-sm" data-modal-open="applyModal" onclick="setDomain('Research Team')">Apply Now</button></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPLY MODAL -->
+<div class="modal-overlay" id="applyModal">
+  <div class="modal">
+    <button class="modal-close">✕</button>
+    <span class="tag tag-purple" style="margin-bottom:14px;">Apply Now</span>
+    <h3 id="applyDomainTitle">Application Form</h3>
+    <p style="margin:8px 0 20px;font-size:0.87rem;">Fill in your details below. Our team will review your application and get back to you within 5–7 working days.</p>
+    <!-- Replace with GOOGLE_FORM_LINK_HERE for actual backend -->
+    <div class="form-row">
+      <div class="form-group"><label>Full Name <span>*</span></label><input type="text" class="form-control" placeholder="Your full name" /></div>
+      <div class="form-group"><label>Email <span>*</span></label><input type="email" class="form-control" placeholder="your@email.com" /></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Phone Number</label><input type="tel" class="form-control" placeholder="+91 98765 43210" /></div>
+      <div class="form-group"><label>Year & Course <span>*</span></label><input type="text" class="form-control" placeholder="e.g. Year 2, B.Tech CSE" /></div>
+    </div>
+    <div class="form-group"><label>Department Applied For</label><input type="text" class="form-control" id="domainInput" readonly /></div>
+    <div class="form-group"><label>Why do you want to join this department? <span>*</span></label><textarea class="form-control" rows="4" placeholder="Tell us what excites you about this role and what you'll bring to the team..."></textarea></div>
+    <div class="form-group"><label>Relevant Experience / Portfolio Link</label><input type="text" class="form-control" placeholder="LinkedIn, Behance, GitHub, or paste a brief description" /></div>
+    <button class="btn btn-purple" style="width:100%;margin-top:8px;" onclick="submitApply()">Submit Application</button>
+    <p style="font-size:0.75rem;text-align:center;margin-top:10px;color:var(--gray-2);">Or apply via Google Form: <a href="GOOGLE_FORM_LINK_HERE" style="color:var(--purple-2);">GOOGLE_FORM_LINK_HERE</a></p>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="applySuccessModal">
+  <div class="modal" style="text-align:center;">
+    <button class="modal-close">✕</button>
+    <div style="font-size:4rem;margin-bottom:16px;">🎉</div>
+    <h3>Application Submitted!</h3>
+    <p style="margin:12px 0 24px;">Thank you for applying to The Voyage Club. Our team will review your application and reach out within 5–7 working days.</p>
+    <div class="alert alert-success">✅ A confirmation email will be sent to your registered email address.</div>
+    <button class="btn btn-primary" onclick="document.getElementById('applySuccessModal').classList.remove('open')">Close</button>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="nav-logo"><div class="nav-logo-mark">TVC</div><div class="nav-logo-text"><span class="name">The Voyage Club</span><span class="sub">Student Leadership Org</span></div></div><p>Empowering student leaders and innovators.</p><div class="footer-socials"><a href="INSTAGRAM_LINK_HERE">📸</a><a href="LINKEDIN_LINK_HERE">💼</a><a href="YOUTUBE_LINK_HERE">▶️</a></div></div><div class="footer-col"><h5>Navigate</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="events.html">Events</a></li></ul></div><div class="footer-col"><h5>Get Involved</h5><ul><li><a href="recruitment.html">Recruitment</a></li><li><a href="membership.html">Membership</a></li></ul></div><div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:EMAIL_HERE">📧 EMAIL_HERE</a></li></ul></div></div><div class="footer-bottom"><p>© 2026 The Voyage Club.</p><p>Built with passion 🚀</p></div></div></footer>
+<button class="back-to-top" id="backToTop">↑</button>
+<script src="js/main.js"></script>
+<script>
+function setDomain(name) {
+  document.getElementById('applyDomainTitle').textContent = 'Apply — ' + name;
+  document.getElementById('domainInput').value = name;
+}
+function submitApply() {
+  document.getElementById('applyModal').classList.remove('open');
+  document.getElementById('applySuccessModal').classList.add('open');
+}
+</script>
+<style>
+.recruit-stats-bar { display:flex; align-items:center; justify-content:space-around; background:var(--navy-3); border:1px solid rgba(255,255,255,0.07); border-radius:var(--radius-xl); padding:32px 48px; flex-wrap:wrap; gap:24px; }
+.rs-stat { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.rs-stat span:last-child { font-size:0.78rem; color:var(--gray-1); font-family:var(--font-ui); text-align:center; }
+.rs-divider { width:1px; height:48px; background:rgba(255,255,255,0.08); }
+
+.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+.process-step { display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 16px; position:relative; }
+.step-circle { width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.3rem; font-weight:900; color:var(--navy); margin-bottom:16px; position:relative; z-index:1; flex-shrink:0; }
+.step-circle.cyan { background:linear-gradient(135deg,var(--cyan),var(--cyan-dim)); }
+.step-circle.purple { background:linear-gradient(135deg,var(--purple),var(--purple-2)); color:var(--white); }
+.step-line { position:absolute; top:28px; left:calc(50% + 28px); right:calc(-50% + 28px); height:2px; background:linear-gradient(90deg,var(--cyan),var(--purple)); z-index:0; }
+.step-line.last { display:none; }
+.process-step h4 { color:var(--white); margin-bottom:8px; font-size:0.95rem; }
+.process-step p { font-size:0.83rem; }
+
+.domains-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.domain-card { background:var(--navy-3); border:1px solid rgba(255,255,255,0.07); border-radius:var(--radius-lg); padding:28px; transition:var(--transition); display:flex; flex-direction:column; gap:18px; }
+.domain-card:hover { border-color:rgba(0,212,255,0.2); transform:translateY(-3px); box-shadow:var(--shadow-cyan); }
+.domain-card-header { display:flex; align-items:center; gap:14px; }
+.domain-icon-wrap { width:56px; height:56px; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.domain-icon-wrap.cyan { background:var(--cyan-glow); border:1px solid rgba(0,212,255,0.2); }
+.domain-icon-wrap.purple { background:var(--purple-glow); border:1px solid rgba(124,58,237,0.3); }
+.domain-card-header h3 { margin-bottom:4px; font-size:1.05rem; }
+.domain-desc { font-size:0.87rem; line-height:1.6; }
+.domain-section h5 { font-family:var(--font-ui); font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray-1); margin-bottom:8px; }
+.skill-chips { display:flex; flex-wrap:wrap; gap:6px; }
+.skill-chips span { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:100px; padding:4px 12px; font-size:0.75rem; font-family:var(--font-ui); color:var(--off-white); }
+.domain-list { display:flex; flex-direction:column; gap:6px; }
+.domain-list li { font-size:0.83rem; color:var(--gray-1); padding-left:14px; position:relative; }
+.domain-list li::before { content:'→'; position:absolute; left:0; color:var(--cyan); font-size:0.75rem; }
+.domain-footer { display:flex; align-items:center; justify-content:space-between; margin-top:4px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); }
+
+@media (max-width:1024px) { .domains-grid { grid-template-columns:1fr; } .process-steps { grid-template-columns:1fr 1fr; gap:32px; } .step-line { display:none; } }
+@media (max-width:768px) { .process-steps { grid-template-columns:1fr; } .recruit-stats-bar { flex-direction:column; padding:24px; } .rs-divider { width:100%; height:1px; } }
+</style>
+</body>
+</html>
