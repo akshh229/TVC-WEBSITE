@@ -67,11 +67,16 @@ body {
 }
 
 .site-bg-video {
+  background: linear-gradient(135deg, rgba(231, 119, 36, 0.05), rgba(31, 122, 77, 0.08), rgba(255, 250, 240, 1));
   inset: 0;
   overflow: hidden;
   pointer-events: none;
   position: fixed;
   z-index: 0;
+}
+
+[data-theme="dark"] .site-bg-video {
+  background: linear-gradient(135deg, rgba(23, 19, 15, 1), rgba(23, 19, 15, 0.9));
 }
 
 .site-bg-video video {
