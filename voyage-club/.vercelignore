@@ -1,0 +1,14 @@
+# Legacy static prototype files are kept in the repo but are not part of the Next.js deployment.
+*.html
+css/
+js/
+assets/
+grainient-*.webm
+
+# Local/test/build artifacts
+.next/
+node_modules/
+test-results/
+playwright-report/
+coverage/
+*.tsbuildinfo
