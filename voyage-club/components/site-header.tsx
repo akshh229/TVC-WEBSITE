@@ -34,8 +34,8 @@ export function SiteHeader() {
 
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("tvc-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const nextTheme = savedTheme === "dark" || (!savedTheme && prefersDark) ? "dark" : "light";
+    // Default to light mode, ignoring OS preferences
+    const nextTheme = savedTheme === "dark" ? "dark" : "light";
     document.documentElement.dataset.theme = nextTheme;
     queueMicrotask(() => setTheme(nextTheme));
   }, []);
