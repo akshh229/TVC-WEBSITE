@@ -98,26 +98,32 @@ export default async function HomePage() {
       <section className="section">
         <div className="container">
           <SectionHeader eyebrow="Programs" title="Sessions With Substance" />
-          <div className="event-timeline">
-            {events.slice(0, 3).map((event, index) => (
-              <article className="card event-card" key={event.id}>
-                <div className="event-step">{String(index + 1).padStart(2, "0")}</div>
-                <div className="date-badge">
-                  <strong>{new Date(event.date).toLocaleDateString("en-US", { day: "2-digit" })}</strong>
-                  <span>{new Date(event.date).toLocaleDateString("en-US", { month: "short" })}</span>
-                </div>
-                <ManagedMedia src={event.poster_url} alt={`${event.title} event poster`} label="Event poster coming soon" />
-                <div className="event-meta-row">
-                  <span className="badge cyan">{event.category}</span>
-                  <span className="badge success"><CalendarClock size={13} aria-hidden="true" /> Upcoming</span>
-                </div>
-                <h3 style={{ marginTop: 14 }}>{event.title}</h3>
-                <p style={{ marginTop: 8 }}>{event.summary}</p>
-                <p style={{ marginTop: 14 }}>{new Date(event.date).toLocaleDateString()} · {event.location}</p>
-                <Link href="/events" className="btn ghost" style={{ marginTop: 18 }}>View event</Link>
-              </article>
-            ))}
-          </div>
+          {events.length ? (
+            <div className="event-timeline">
+              {events.slice(0, 3).map((event, index) => (
+                <article className="card event-card" key={event.id}>
+                  <div className="event-step">{String(index + 1).padStart(2, "0")}</div>
+                  <div className="date-badge">
+                    <strong>{new Date(event.date).toLocaleDateString("en-US", { day: "2-digit" })}</strong>
+                    <span>{new Date(event.date).toLocaleDateString("en-US", { month: "short" })}</span>
+                  </div>
+                  <ManagedMedia src={event.poster_url} alt={`${event.title} event poster`} label="Event poster coming soon" />
+                  <div className="event-meta-row">
+                    <span className="badge cyan">{event.category}</span>
+                    <span className="badge success"><CalendarClock size={13} aria-hidden="true" /> Upcoming</span>
+                  </div>
+                  <h3 style={{ marginTop: 14 }}>{event.title}</h3>
+                  <p style={{ marginTop: 8 }}>{event.summary}</p>
+                  <p style={{ marginTop: 14 }}>{new Date(event.date).toLocaleDateString()} · {event.location}</p>
+                  <Link href="/events" className="btn ghost" style={{ marginTop: 18 }}>View event</Link>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="empty-state">
+              <p>Upcoming sessions and events will be announced here soon.</p>
+            </div>
+          )}
         </div>
       </section>
 
