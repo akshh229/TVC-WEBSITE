@@ -1456,16 +1456,78 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{outline:none}
   .site-bg-video video{display:none}
 }
 
-/* ── Scroll reveal ── */
-.reveal {
-  clip-path: inset(0 0 10% 0);
-  opacity: 0;
-  transition: opacity 680ms ease var(--reveal-delay, 0ms), clip-path 680ms ease var(--reveal-delay, 0ms);
+/* ── Premium Scroll Reveal Animation System ── */
+.reveal-base,
+.stagger-parent > * {
+  margin: 0;
+  will-change: opacity, filter, transform, clip-path;
 }
 
-.reveal.is-visible {
-  clip-path: inset(0 0 0 0);
-  opacity: 1;
+@media (prefers-reduced-motion: no-preference) {
+  /* Fade */
+  .reveal-fade,
+  .stagger-fade > * {
+    opacity: 0;
+    transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Clip (Smooth Mask Reveal) */
+  .reveal-clip,
+  .stagger-clip > * {
+    clip-path: inset(0 0 10% 0);
+    opacity: 0;
+    transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), clip-path 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Blur */
+  .reveal-blur,
+  .stagger-blur > * {
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 850ms cubic-bezier(0.16, 1, 0.3, 1), filter 850ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Scale (Subtle zoom out/in) */
+  .reveal-scale,
+  .stagger-scale > * {
+    opacity: 0.01;
+    transform: scale(0.96);
+    transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Active States */
+  .reveal-active.reveal-fade,
+  .stagger-active.stagger-fade > * {
+    opacity: 1;
+  }
+
+  .reveal-active.reveal-clip,
+  .stagger-active.stagger-clip > * {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+
+  .reveal-active.reveal-blur,
+  .stagger-active.stagger-blur > * {
+    filter: blur(0px);
+    opacity: 1;
+  }
+
+  .reveal-active.reveal-scale,
+  .stagger-active.stagger-scale > * {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Stagger Timing (40-60ms range as requested) */
+  .stagger-active > *:nth-child(1) { transition-delay: calc(var(--stagger-delay, 50ms) * 0); }
+  .stagger-active > *:nth-child(2) { transition-delay: calc(var(--stagger-delay, 50ms) * 1); }
+  .stagger-active > *:nth-child(3) { transition-delay: calc(var(--stagger-delay, 50ms) * 2); }
+  .stagger-active > *:nth-child(4) { transition-delay: calc(var(--stagger-delay, 50ms) * 3); }
+  .stagger-active > *:nth-child(5) { transition-delay: calc(var(--stagger-delay, 50ms) * 4); }
+  .stagger-active > *:nth-child(6) { transition-delay: calc(var(--stagger-delay, 50ms) * 5); }
+  .stagger-active > *:nth-child(7) { transition-delay: calc(var(--stagger-delay, 50ms) * 6); }
+  .stagger-active > *:nth-child(8) { transition-delay: calc(var(--stagger-delay, 50ms) * 7); }
 }
 
 /* ── Admin responsive ── */

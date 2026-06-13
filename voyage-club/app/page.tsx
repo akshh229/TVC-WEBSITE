@@ -6,6 +6,7 @@ import { ManagedMedia } from "@/components/managed-media";
 import { SectionHeader } from "@/components/section";
 import { TypewriterHeadline } from "@/components/typewriter-headline";
 import { instagramHighlights, instagramProfile, memberSpotlights } from "@/lib/content";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { getEvents, getGalleryItems, getSponsors, getTestimonials } from "@/lib/data";
 
 export default async function HomePage() {
@@ -148,11 +149,13 @@ export default async function HomePage() {
 
       <section className="section alt">
         <div className="container">
-          <SectionHeader eyebrow="From Instagram" title="Real Posts, Real Momentum">
-            Recent TVC posts now load directly from local site assets, including recruitment, National Youth Parliament,
-            Rashtrapati Bhavan, and campus achievement highlights.
-          </SectionHeader>
-          <div className="instagram-grid">
+          <ScrollReveal animation="clip">
+            <SectionHeader eyebrow="From Instagram" title="Real Posts, Real Momentum">
+              Recent TVC posts now load directly from local site assets, including recruitment, National Youth Parliament,
+              Rashtrapati Bhavan, and campus achievement highlights.
+            </SectionHeader>
+          </ScrollReveal>
+          <ScrollReveal as="div" className="instagram-grid" animation="scale" staggerChildren staggerDelay={50}>
             {instagramHighlights.map((item, index) => (
               <a className={`insta-card${index === 0 ? " wide" : ""}`} href={item.href} key={item.href} target="_blank" rel="noreferrer">
                 <Image src={item.src} alt={`${item.title} post from The Voyage Club`} fill sizes={index === 0 ? "(max-width: 760px) 100vw, 50vw" : "(max-width: 760px) 50vw, 25vw"} />
@@ -162,13 +165,13 @@ export default async function HomePage() {
                 </span>
               </a>
             ))}
-          </div>
-          <div className="grid three moodboard">
+          </ScrollReveal>
+          <ScrollReveal as="div" className="grid three moodboard" animation="fade" staggerChildren staggerDelay={60}>
             <article className="card feature-card"><BookOpenText aria-hidden="true" /><h3>Explore Bharat&apos;s Past</h3><p>Recruitment language points to a community interested in history, culture, and future-ready growth.</p></article>
             <article className="card feature-card"><ShieldCheck aria-hidden="true" /><h3>Soldier Talks</h3><p>A public program around military learning, discipline, patriotism, modern leadership, and civic responsibility.</p></article>
             <article className="card feature-card"><Handshake aria-hidden="true" /><h3>Learn, Lead, Network</h3><p>The recruitment promise is practical: meet people, build confidence, take responsibility, and create impact.</p></article>
-          </div>
-          {gallery.length ? <div className="grid four">
+          </ScrollReveal>
+          {gallery.length ? <ScrollReveal as="div" className="grid four" animation="blur" staggerChildren staggerDelay={40}>
             {gallery.slice(0, 4).map((item) => (
               <article className="card" key={item.id}>
                 <ManagedMedia
@@ -180,7 +183,7 @@ export default async function HomePage() {
                 <p>{item.category}</p>
               </article>
             ))}
-          </div> : <div className="empty-state"><p>Approved club highlights will appear here after the first media upload.</p><Link className="btn secondary" href="/events">Explore upcoming events</Link></div>}
+          </ScrollReveal> : <div className="empty-state"><p>Approved club highlights will appear here after the first media upload.</p><Link className="btn secondary" href="/events">Explore upcoming events</Link></div>}
         </div>
       </section>
 
