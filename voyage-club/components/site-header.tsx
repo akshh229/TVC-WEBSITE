@@ -63,8 +63,19 @@ export function SiteHeader() {
     <header className={`site-header${scrolled ? " scrolled" : ""}`}>
       <div className="container site-header-inner">
         <Link href="/" className="brand" aria-label="The Voyage Club home">
-          <span className="brand-mark image-mark">
-            <Image src={instagramProfile.logo} alt="" fill sizes="48px" priority />
+          <span className="brand-lockup" aria-hidden="true">
+            <span className="partner-mark wide">
+              <Image src="/brand/chandigarh-university.webp" alt="" fill sizes="96px" priority />
+            </span>
+            <span className="brand-mark image-mark">
+              <Image src={instagramProfile.logo} alt="" fill sizes="48px" priority />
+            </span>
+            <span className="partner-mark my-bharat">
+              <Image src="/brand/my-bharat.png" alt="" fill sizes="72px" priority />
+            </span>
+            <span className="partner-mark yas">
+              <Image src="/brand/youth-affairs-sports.png" alt="" fill sizes="92px" priority />
+            </span>
           </span>
           <span>
             <span className="brand-name">The Voyage Club</span>

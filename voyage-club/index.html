@@ -55,12 +55,18 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="hero">
-  <!-- Animated background grid -->
-  <div class="hero-grid" aria-hidden="true"></div>
-  <!-- Glow orbs -->
-  <div class="orb orb-1" aria-hidden="true"></div>
-  <div class="orb orb-2" aria-hidden="true"></div>
-  <div class="orb orb-3" aria-hidden="true"></div>
+  <!-- Grainient animated video background -->
+  <video
+    class="hero-video-bg"
+    src="grainient-1781321166751.webm"
+    autoplay
+    muted
+    loop
+    playsinline
+    aria-hidden="true"
+  ></video>
+  <!-- Dark overlay for readability -->
+  <div class="hero-video-overlay" aria-hidden="true"></div>
 
   <div class="container">
     <div class="hero-content">
@@ -109,10 +115,7 @@
     <!-- Hero visual card -->
     <div class="hero-visual">
       <div class="hero-card-main">
-        <div class="img-placeholder" style="width:100%;height:340px;border-radius:16px;">
-          <span class="ph-icon">🚀</span>
-          <span>Hero Image — IMAGE_LINK_HERE</span>
-        </div>
+        <img src="https://drive.google.com/uc?export=view&id=1VHS5FV_fNZwoFACY8O0vgfTL89whqt86" alt="TVC Event" style="width:100%;height:340px;border-radius:16px;object-fit:cover;display:block;" />
         <div class="hero-card-badge">
           <div class="badge badge-success">Currently Recruiting</div>
           <span style="color:var(--gray-1);font-size:0.78rem;font-family:var(--font-ui);">Applications Open</span>
@@ -189,12 +192,8 @@
 
       <div class="intro-right reveal">
         <div class="intro-visual-grid">
-          <div class="img-placeholder" style="height:260px;border-radius:16px;">
-            <span class="ph-icon">📸</span><span>Club Photo — IMAGE_LINK_HERE</span>
-          </div>
-          <div class="img-placeholder" style="height:180px;border-radius:12px;">
-            <span class="ph-icon">🎯</span><span>Event Photo — IMAGE_LINK_HERE</span>
-          </div>
+          <img src="https://drive.google.com/uc?export=view&id=17UULjQjbkqhFrEBA9Tw6boGXK8ArEZMt" alt="Club event" style="height:260px;border-radius:16px;width:100%;object-fit:cover;display:block;" />
+          <img src="https://drive.google.com/uc?export=view&id=1apr1R-GP6XKsXSN9kBTCG9yRJLiHP30D" alt="TVC event" style="height:180px;border-radius:12px;width:100%;object-fit:cover;display:block;" />
           <div class="intro-quote-card">
             <p class="quote-text">"The Voyage Club gave me the confidence to lead and the network to grow."</p>
             <div class="quote-author">
@@ -440,21 +439,11 @@
       <a href="gallery.html" class="btn btn-outline">Full Gallery</a>
     </div>
     <div class="gallery-preview-grid reveal">
-      <div class="img-placeholder gallery-item-lg" style="height:300px;">
-        <span class="ph-icon">📸</span><span>Gallery Image — IMAGE_LINK_HERE</span>
-      </div>
-      <div class="img-placeholder gallery-item" style="height:145px;">
-        <span class="ph-icon">📸</span><span>IMAGE_LINK_HERE</span>
-      </div>
-      <div class="img-placeholder gallery-item" style="height:145px;">
-        <span class="ph-icon">📸</span><span>IMAGE_LINK_HERE</span>
-      </div>
-      <div class="img-placeholder gallery-item" style="height:145px;">
-        <span class="ph-icon">📸</span><span>IMAGE_LINK_HERE</span>
-      </div>
-      <div class="img-placeholder gallery-item" style="height:145px;">
-        <span class="ph-icon">📸</span><span>IMAGE_LINK_HERE</span>
-      </div>
+      <img src="https://drive.google.com/uc?export=view&id=1T-EBBWGsIB49eQaRPic-2p_MvL2txM9o" alt="TVC Gallery" class="gallery-item-lg" style="height:300px;border-radius:16px;object-fit:cover;display:block;width:100%;" />
+      <img src="https://drive.google.com/uc?export=view&id=15kF7LiBfFbz0lwdA6XpoGQ-Kpgt_kMU8" alt="TVC Event" class="gallery-item" style="height:145px;border-radius:12px;object-fit:cover;display:block;width:100%;" />
+      <img src="https://drive.google.com/uc?export=view&id=1ZBJyBGGC00HhuVas-qBIjD6swAaFOagB" alt="TVC Event" class="gallery-item" style="height:145px;border-radius:12px;object-fit:cover;display:block;width:100%;" />
+      <img src="https://drive.google.com/uc?export=view&id=1loYVFN1_qgknYdrPYnugGaOpyvYG_vtq" alt="TVC Event" class="gallery-item" style="height:145px;border-radius:12px;object-fit:cover;display:block;width:100%;" />
+      <img src="https://drive.google.com/uc?export=view&id=1CjfZz5nXRrjgRWMczYArw2XhyjJcf_hu" alt="TVC Event" class="gallery-item" style="height:145px;border-radius:12px;object-fit:cover;display:block;width:100%;" />
     </div>
   </div>
 </section>
@@ -629,17 +618,7 @@
 <button class="back-to-top" id="backToTop" title="Back to top">↑</button>
 
 <script src="js/main.js"></script>
-<script>
-  // Hero parallax subtle
-  const hero = document.querySelector('.hero');
-  const orbs = document.querySelectorAll('.orb');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    orbs.forEach((orb, i) => {
-      orb.style.transform = `translateY(${y * (0.1 + i * 0.05)}px)`;
-    });
-  }, { passive: true });
-</script>
+
 
 <style>
 /* ---- HOME-SPECIFIC STYLES ---- */
@@ -650,7 +629,35 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  background: var(--navy);
 }
+
+/* Grainient video background */
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Dark gradient overlay so text stays readable */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgba(5,13,31,0.72) 0%,
+      rgba(5,13,31,0.45) 50%,
+      rgba(5,13,31,0.60) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+}
+
 .hero .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -658,35 +665,6 @@
   align-items: center;
   position: relative;
   z-index: 2;
-}
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(80px);
-}
-.orb-1 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
-  top: -100px; left: -100px;
-}
-.orb-2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 70%);
-  top: 50%; right: -60px;
-}
-.orb-3 {
-  width: 300px; height: 300px;
-  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
-  bottom: -60px; left: 40%;
 }
 
 .hero-tag { margin-bottom: 20px; }

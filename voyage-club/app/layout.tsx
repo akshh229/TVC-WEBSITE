@@ -44,6 +44,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${montserrat.variable} ${outfit.variable} ${poppins.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
+        <div className="site-bg-video" aria-hidden="true">
+          <video autoPlay loop muted playsInline preload="metadata">
+            <source src="/backgrounds/grainient-1781321166751.webm" type="video/webm" />
+          </video>
+        </div>
         <SiteInteractions />
         <SiteHeader />
         <main id="main-content">{children}</main>
