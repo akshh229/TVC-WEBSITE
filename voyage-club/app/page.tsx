@@ -35,10 +35,11 @@ export default async function HomePage() {
               <Link className="btn secondary" href="/recruitment">Explore Teams</Link>
             </div>
             <div className="stats-row">
-              <CountUpStat value={instagramProfile.followers} label="Instagram followers" />
-              <CountUpStat value={instagramProfile.following} label="Following" />
-              <CountUpStat value={8} label="Domains" />
-              <CountUpStat value="CU" label="Campus community" />
+              <CountUpStat value={500} suffix="+" label="Total Members" />
+              <CountUpStat value={60} suffix="+" label="Events Hosted" />
+              <CountUpStat value={30} suffix="+" label="Sponsors & Partners" />
+              <CountUpStat value={8} label="Active Departments" />
+              <CountUpStat value={95} suffix="%" label="Member Satisfaction" />
             </div>
           </div>
           <div className="social-showcase" aria-label="Recent Instagram posts from The Voyage Club">
