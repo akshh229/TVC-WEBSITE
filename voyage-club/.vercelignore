@@ -3,7 +3,8 @@
 css/
 js/
 assets/
-grainient-*.webm
+# Ignore the legacy webm files at the root, but not the ones in public/backgrounds/
+/grainient-*.webm
 
 # Local/test/build artifacts
 .next/
