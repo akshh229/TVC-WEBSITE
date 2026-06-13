@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAdmin } from "./auth";
-import { createSupabaseServerClient, hasSupabaseEnv } from "./supabase/server";
+import { createSupabaseServerClient, createSupabaseServiceClient, hasSupabaseEnv } from "./supabase/server";
 import type { ActionResult, AdminContentTable, SubmissionTable } from "./types";
 import {
   contactSchema,
@@ -157,12 +157,15 @@ export async function submitEventRegistration(
 
     let status = event.registration_status === "waitlist" ? "waitlisted" : "registered";
     if (event.capacity) {
-      const { count } = await supabase
-        .from("event_registrations")
-        .select("id", { count: "exact", head: true })
-        .eq("event_id", event.id)
-        .in("status", ["registered", "attended"]);
-      if ((count ?? 0) >= event.capacity) status = "waitlisted";
+      const adminClient = createSupabaseServiceClient();
+      if (adminClient) {
+        const { count } = await adminClient
+          .from("event_registrations")
+          .select("id", { count: "exact", head: true })
+          .eq("event_id", event.id)
+          .in("status", ["registered", "attended"]);
+        if ((count ?? 0) >= event.capacity) status = "waitlisted";
+      }
     }
     return insertPublic("event_registrations", { ...payload, status });
   }
