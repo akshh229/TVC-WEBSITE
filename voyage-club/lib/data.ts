@@ -5,6 +5,7 @@ import {
   fallbackTeam,
   fallbackTestimonials
 } from "./content";
+import { resolveStoragePublicUrl } from "./media";
 import { createSupabaseServerClient } from "./supabase/server";
 import type { EventItem, GalleryItem, Sponsor, TeamMember, Testimonial } from "./types";
 
@@ -22,7 +23,10 @@ export async function getEvents(): Promise<EventItem[]> {
     .order("date", { ascending: true });
 
   if (error) return useFallbacks ? fallbackEvents : [];
-  return (data ?? []) as EventItem[];
+  return (data ?? []).map((event) => ({
+    ...event,
+    poster_url: event.poster_url ?? resolveStoragePublicUrl(event.poster_path)
+  })) as EventItem[];
 }
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
@@ -36,7 +40,10 @@ export async function getTeamMembers(): Promise<TeamMember[]> {
     .order("sort_order", { ascending: true });
 
   if (error) return useFallbacks ? fallbackTeam : [];
-  return (data ?? []) as TeamMember[];
+  return (data ?? []).map((member) => ({
+    ...member,
+    image_url: member.image_url ?? resolveStoragePublicUrl(member.image_path)
+  })) as TeamMember[];
 }
 
 export async function getGalleryItems(): Promise<GalleryItem[]> {
@@ -51,7 +58,11 @@ export async function getGalleryItems(): Promise<GalleryItem[]> {
     .order("sort_order", { ascending: true });
 
   if (error) return useFallbacks ? fallbackGallery : [];
-  return (data ?? []) as GalleryItem[];
+  return (data ?? []).map((item) => ({
+    ...item,
+    media_url: item.media_url ?? resolveStoragePublicUrl(item.media_path),
+    thumbnail_url: item.thumbnail_url ?? resolveStoragePublicUrl(item.thumbnail_path)
+  })) as GalleryItem[];
 }
 
 export async function getSponsors(): Promise<Sponsor[]> {
@@ -65,7 +76,10 @@ export async function getSponsors(): Promise<Sponsor[]> {
     .order("sort_order", { ascending: true });
 
   if (error) return useFallbacks ? fallbackSponsors : [];
-  return (data ?? []) as Sponsor[];
+  return (data ?? []).map((sponsor) => ({
+    ...sponsor,
+    logo_url: sponsor.logo_url ?? resolveStoragePublicUrl(sponsor.logo_path)
+  })) as Sponsor[];
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {
@@ -79,6 +93,8 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     .order("sort_order", { ascending: true });
 
   if (error) return useFallbacks ? fallbackTestimonials : [];
-  return (data ?? []) as Testimonial[];
+  return (data ?? []).map((testimonial) => ({
+    ...testimonial,
+    image_url: testimonial.image_url ?? resolveStoragePublicUrl(testimonial.image_path)
+  })) as Testimonial[];
 }
-

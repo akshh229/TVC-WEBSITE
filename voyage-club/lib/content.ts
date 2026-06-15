@@ -222,7 +222,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g1",
     title: "Voyage Fest",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1VHS5FV_fNZwoFACY8O0vgfTL89whqt86",
+    media_url: "/gallery/event_01.jpg",
     media_type: "image",
     is_published: true
   },
@@ -230,7 +230,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g2",
     title: "Sponsorship Event",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=17UULjQjbkqhFrEBA9Tw6boGXK8ArEZMt",
+    media_url: "/gallery/event_02.jpg",
     media_type: "image",
     is_published: true
   },
@@ -238,7 +238,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g3",
     title: "TVC Workshop",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=1apr1R-GP6XKsXSN9kBTCG9yRJLiHP30D",
+    media_url: "/gallery/event_03.jpg",
     media_type: "image",
     is_published: true
   },
@@ -246,7 +246,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g4",
     title: "Best Club Award",
     category: "Award",
-    media_url: "https://drive.google.com/uc?export=view&id=1T-EBBWGsIB49eQaRPic-2p_MvL2txM9o",
+    media_url: "/gallery/event_04.jpg",
     media_type: "image",
     is_published: true
   },
@@ -254,7 +254,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g5",
     title: "TVC Team",
     category: "Team",
-    media_url: "https://drive.google.com/uc?export=view&id=15kF7LiBfFbz0lwdA6XpoGQ-Kpgt_kMU8",
+    media_url: "/gallery/event_05.jpg",
     media_type: "image",
     is_published: true
   },
@@ -262,7 +262,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g6",
     title: "TVC Fest",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1ZBJyBGGC00HhuVas-qBIjD6swAaFOagB",
+    media_url: "/gallery/event_06.jpg",
     media_type: "image",
     is_published: true
   },
@@ -270,7 +270,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g7",
     title: "TVC Event",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1loYVFN1_qgknYdrPYnugGaOpyvYG_vtq",
+    media_url: "/gallery/event_07.jpg",
     media_type: "image",
     is_published: true
   },
@@ -278,7 +278,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g8",
     title: "TVC Workshop",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=1CjfZz5nXRrjgRWMczYArw2XhyjJcf_hu",
+    media_url: "/gallery/event_08.jpg",
     media_type: "image",
     is_published: true
   },
@@ -286,7 +286,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g9",
     title: "500 Members",
     category: "Milestone",
-    media_url: "https://drive.google.com/uc?export=view&id=1nbAE4S0LiHKmk0xU4o3jAGT_J5E5plAT",
+    media_url: "/gallery/event_09.jpg",
     media_type: "image",
     is_published: true
   },
@@ -294,7 +294,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g10",
     title: "TVC Event",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1RkSIKm2KqUKWiPnBg_OdqGxXf5LBbJXh",
+    media_url: "/gallery/event_10.jpg",
     media_type: "image",
     is_published: true
   },
@@ -302,7 +302,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g11",
     title: "TVC Fest",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1fEzFxOb4yXi0a3IcJJhMBJ5UOqKLLcLf",
+    media_url: "/gallery/event_11.jpg",
     media_type: "image",
     is_published: true
   },
@@ -310,7 +310,7 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g12",
     title: "TVC Workshop",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=1hZt0L0cLQv7bRs4rJHPT0I0CQ7GVXrGO",
+    media_url: "/gallery/event_12.jpg",
     media_type: "image",
     is_published: true
   }

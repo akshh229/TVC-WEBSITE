@@ -1,29 +1,16 @@
 import type { Metadata } from "next";
-import { Montserrat, Outfit, Poppins } from "next/font/google";
+import type { CSSProperties } from "react";
 import "./globals.css";
 import { SiteInteractions } from "@/components/site-interactions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { siteConfig } from "@/lib/content";
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap"
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap"
-});
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  variable: "--font-ui",
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap"
-});
+const fontVariables = {
+  "--font-display": '"Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif',
+  "--font-body": '"Avenir Next", "Segoe UI", system-ui, sans-serif',
+  "--font-ui": '"SF Pro Text", "Segoe UI", system-ui, sans-serif'
+} as CSSProperties;
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -41,7 +28,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${outfit.variable} ${poppins.variable}`}>
+    <html lang="en" style={fontVariables}>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div className="site-bg-video" aria-hidden="true">
