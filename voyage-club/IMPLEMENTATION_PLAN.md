@@ -1,9 +1,36 @@
 # The Voyage Club MVP - Remaining Implementation Plan
 
 **Prepared:** June 13, 2026  
-**Current completion estimate:** 55-60% overall  
+**Last reviewed:** June 22, 2026
+**Current completion estimate:** 65-70% overall
 **Target:** Launch-ready public website with admin-only content and application management  
 **Stack:** Next.js 16, React 19, TypeScript, Supabase, Vercel
+
+## Audit Remediation - June 22, 2026
+
+Completed:
+
+- Migrated fallback gallery media away from Google Drive to compressed local assets.
+- Added meaningful fallback gallery alt text.
+- Removed the obsolete Google Drive image configuration.
+- Confirmed that Next.js 16 runs the existing root `proxy.ts`; no duplicate
+  `middleware.ts` should be created.
+- Removed the unused duplicate `utils/supabase/` clients.
+- Fixed the five-item homepage statistics grid.
+- Added a basic per-instance, per-IP throttle to public Server Actions.
+- Made capacity-limited registration fail closed when the service client or count query
+  is unavailable.
+- Removed the retired static HTML/CSS/JS site and legacy event assets.
+- Removed duplicate root background videos and the unused public background video.
+- Re-encoded the active background loop from 50.2 MB to under 400 KB.
+
+Still requires project-owner input or infrastructure:
+
+- Supply the official club email and YouTube channel URL.
+- Move public-form throttling to a shared durable store if traffic or abuse requires
+  enforcement across multiple Vercel instances.
+- Run authenticated admin/session and Supabase RLS integration tests against the
+  deployed project.
 
 ## 1. Objective
 
@@ -1063,4 +1090,3 @@ The first sprint should contain only:
 
 Do not begin broad visual polish until this sprint passes its security and persistence
 acceptance tests.
-

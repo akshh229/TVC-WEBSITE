@@ -757,7 +757,7 @@ p {
 .stats-row {
   display: grid;
   gap: 14px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   margin-top: 38px;
 }
 
@@ -1301,6 +1301,37 @@ th {
 .insta-overlay span{color:#f3dfc3;font-size:.78rem;font-weight:650;line-height:1.35}
 .gallery-social{margin-bottom:0}
 
+/* ── Continuous gallery tape ── */
+.gallery-tape{background:linear-gradient(90deg,rgba(255,253,248,.94),rgba(255,248,232,.82),rgba(255,253,248,.94));isolation:isolate;overflow:hidden;position:relative}
+.gallery-tape::before,.gallery-tape::after{content:"";height:82px;left:0;pointer-events:none;position:absolute;right:0;z-index:3}
+.gallery-tape::before{background:linear-gradient(180deg,var(--paper),transparent);top:0}
+.gallery-tape::after{background:linear-gradient(0deg,var(--paper),transparent);bottom:0}
+.gallery-tape-desktop{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr));height:clamp(640px,76vh,860px);overflow:hidden;padding:8px 10px}
+.gallery-tape-desktop-1{grid-template-columns:minmax(0,min(100%,520px));justify-content:center}
+.gallery-tape-desktop-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.gallery-tape-mobile{display:none}
+.gallery-tape-lane{min-width:0;overflow:hidden}
+.gallery-tape-track{animation:galleryTape 34s linear infinite;display:flex;flex-direction:column;will-change:transform}
+.gallery-tape-lane-2 .gallery-tape-track{animation-direction:reverse;animation-duration:38s}
+.gallery-tape-lane-3 .gallery-tape-track{animation-duration:31s}
+.gallery-tape-set{display:flex;flex-direction:column;gap:18px;padding-bottom:18px}
+.gallery-tape-card{background:rgba(255,253,248,.96);border:5px solid #fffdf8;border-radius:16px;box-shadow:0 14px 34px rgba(82,54,21,.16);overflow:hidden;transform:rotate(-1.2deg)}
+a.gallery-tape-card{color:inherit;display:block;text-decoration:none}
+.gallery-tape-card:nth-child(even){transform:rotate(1.1deg)}
+.gallery-tape-card:nth-child(3n){transform:rotate(-.35deg)}
+.gallery-tape-media{aspect-ratio:4/3;border-radius:11px 11px 4px 4px}
+.gallery-tape-media img{object-position:center}
+.gallery-tape-caption{padding:14px 14px 16px}
+.gallery-tape-caption span{color:var(--green);font-family:var(--font-ui),system-ui,sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.gallery-tape-caption h3{font-size:clamp(1rem,1.35vw,1.3rem);line-height:1.12;margin-top:5px}
+.gallery-tape-caption p{font-size:.82rem;line-height:1.45;margin-top:6px}
+.gallery-tape:hover .gallery-tape-track,.gallery-tape:focus-within .gallery-tape-track{animation-play-state:paused}
+
+@keyframes galleryTape{
+  from{transform:translateY(0)}
+  to{transform:translateY(-50%)}
+}
+
 @media(max-width:980px){
   .social-showcase{min-height:420px}
   .event-timeline,
@@ -1319,6 +1350,14 @@ th {
   .instagram-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .insta-card.wide{grid-column:1/-1}
   .insta-overlay{padding:12px}
+  .gallery-tape::before,.gallery-tape::after{height:58px}
+  .gallery-tape-desktop{display:none}
+  .gallery-tape-mobile{display:block;height:min(690px,78vh);overflow:hidden;padding:6px 9px}
+  .gallery-tape-mobile .gallery-tape-track{animation-duration:42s}
+  .gallery-tape-set{gap:14px;padding-bottom:14px}
+  .gallery-tape-card{border-width:5px;border-radius:15px}
+  .gallery-tape-caption{padding:12px 13px 14px}
+  .gallery-tape-caption h3{font-size:1.05rem}
   .value-card{min-height:auto}
   .footer-cta{align-items:flex-start;flex-direction:column}
   .footer-actions{width:100%}

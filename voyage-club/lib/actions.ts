@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAdmin } from "./auth";
@@ -51,6 +52,10 @@ const contentPaths: Record<AdminContentTable, string[]> = {
   testimonials: ["/"]
 };
 
+const publicRateLimitWindowMs = 60_000;
+const publicRateLimitMax = 6;
+const publicSubmissionAttempts = new Map<string, { count: number; resetAt: number }>();
+
 function validationFailure(error: z.ZodError): ActionResult {
   return {
     ok: false,
@@ -64,6 +69,30 @@ function databaseFailure(): ActionResult {
     ok: false,
     message: "We could not complete that request. Please try again."
   };
+}
+
+async function publicRateLimit(formName: keyof typeof publicTableLabels): Promise<ActionResult | null> {
+  const headerList = await headers();
+  const forwardedFor = headerList.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const ip = forwardedFor || headerList.get("x-real-ip") || "unknown";
+  const key = `${formName}:${ip}`;
+  const now = Date.now();
+  const current = publicSubmissionAttempts.get(key);
+
+  if (!current || current.resetAt <= now) {
+    publicSubmissionAttempts.set(key, { count: 1, resetAt: now + publicRateLimitWindowMs });
+    return null;
+  }
+
+  if (current.count >= publicRateLimitMax) {
+    return {
+      ok: false,
+      message: "Too many submissions from this connection. Please wait a minute and try again."
+    };
+  }
+
+  current.count += 1;
+  return null;
 }
 
 function allowDemoData() {
@@ -111,6 +140,8 @@ export async function submitContactInquiry(
 ): Promise<ActionResult> {
   const parsed = contactSchema.safeParse(formDataObject(formData));
   if (!parsed.success) return validationFailure(parsed.error);
+  const limited = await publicRateLimit("contact_inquiries");
+  if (limited) return limited;
   const { website: _website, ...payload } = parsed.data;
   return insertPublic("contact_inquiries", { ...payload, status: "new" });
 }
@@ -121,6 +152,8 @@ export async function submitRecruitmentApplication(
 ): Promise<ActionResult> {
   const parsed = recruitmentSchema.safeParse(formDataObject(formData));
   if (!parsed.success) return validationFailure(parsed.error);
+  const limited = await publicRateLimit("recruitment_applications");
+  if (limited) return limited;
   const { website: _website, ...payload } = parsed.data;
   return insertPublic("recruitment_applications", { ...payload, status: "pending" });
 }
@@ -131,6 +164,8 @@ export async function submitMembershipApplication(
 ): Promise<ActionResult> {
   const parsed = membershipSchema.safeParse(formDataObject(formData));
   if (!parsed.success) return validationFailure(parsed.error);
+  const limited = await publicRateLimit("membership_applications");
+  if (limited) return limited;
   const { website: _website, ...payload } = parsed.data;
   return insertPublic("membership_applications", { ...payload, status: "pending" });
 }
@@ -141,6 +176,8 @@ export async function submitEventRegistration(
 ): Promise<ActionResult> {
   const parsed = eventRegistrationSchema.safeParse(formDataObject(formData));
   if (!parsed.success) return validationFailure(parsed.error);
+  const limited = await publicRateLimit("event_registrations");
+  if (limited) return limited;
   const { website: _website, ...payload } = parsed.data;
 
   const supabase = await createSupabaseServerClient();
@@ -158,14 +195,14 @@ export async function submitEventRegistration(
     let status = event.registration_status === "waitlist" ? "waitlisted" : "registered";
     if (event.capacity) {
       const adminClient = createSupabaseServiceClient();
-      if (adminClient) {
-        const { count } = await adminClient
-          .from("event_registrations")
-          .select("id", { count: "exact", head: true })
-          .eq("event_id", event.id)
-          .in("status", ["registered", "attended"]);
-        if ((count ?? 0) >= event.capacity) status = "waitlisted";
-      }
+      if (!adminClient) return databaseFailure();
+      const { count, error } = await adminClient
+        .from("event_registrations")
+        .select("id", { count: "exact", head: true })
+        .eq("event_id", event.id)
+        .in("status", ["registered", "attended"]);
+      if (error) return databaseFailure();
+      if ((count ?? 0) >= event.capacity) status = "waitlisted";
     }
     return insertPublic("event_registrations", { ...payload, status });
   }
@@ -367,4 +404,3 @@ export async function updateSubmission(
 export const createEvent = createContent.bind(null, "events");
 export const createTeamMember = createContent.bind(null, "team_members");
 export const createGalleryItem = createContent.bind(null, "gallery_items");
-

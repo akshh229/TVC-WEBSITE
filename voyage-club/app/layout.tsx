@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div className="site-bg-video" aria-hidden="true">
           <video autoPlay loop muted playsInline preload="metadata">
-            <source src="/backgrounds/grainient-1781321166751.webm" type="video/webm" />
+            <source src="/backgrounds/grainient-background.webm" type="video/webm" />
           </video>
         </div>
         <SiteInteractions />

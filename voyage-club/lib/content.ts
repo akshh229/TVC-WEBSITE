@@ -222,96 +222,108 @@ export const fallbackGallery: GalleryItem[] = [
     id: "g1",
     title: "Voyage Fest",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1VHS5FV_fNZwoFACY8O0vgfTL89whqt86",
+    media_url: "/gallery/voyage-fest.jpg",
     media_type: "image",
+    alt_text: "Club representatives presenting a commemorative plaque",
     is_published: true
   },
   {
     id: "g2",
     title: "Sponsorship Event",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=17UULjQjbkqhFrEBA9Tw6boGXK8ArEZMt",
+    media_url: "/gallery/sponsorship-event.jpg",
     media_type: "image",
+    alt_text: "Voyage Club members standing together at a campus program",
     is_published: true
   },
   {
     id: "g3",
     title: "TVC Workshop",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=1apr1R-GP6XKsXSN9kBTCG9yRJLiHP30D",
+    media_url: "/gallery/tvc-workshop-1.jpg",
     media_type: "image",
+    alt_text: "Student delegation assembled during a ceremonial campus visit",
     is_published: true
   },
   {
     id: "g4",
     title: "Best Club Award",
     category: "Award",
-    media_url: "https://drive.google.com/uc?export=view&id=1T-EBBWGsIB49eQaRPic-2p_MvL2txM9o",
+    media_url: "/gallery/best-club-award.jpg",
     media_type: "image",
+    alt_text: "Voyage Club award recognition moment",
     is_published: true
   },
   {
     id: "g5",
     title: "TVC Team",
     category: "Team",
-    media_url: "https://drive.google.com/uc?export=view&id=15kF7LiBfFbz0lwdA6XpoGQ-Kpgt_kMU8",
+    media_url: "/gallery/tvc-team.jpg",
     media_type: "image",
+    alt_text: "Voyage Club team members together",
     is_published: true
   },
   {
     id: "g6",
     title: "TVC Fest",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1ZBJyBGGC00HhuVas-qBIjD6swAaFOagB",
+    media_url: "/gallery/tvc-fest-1.jpg",
     media_type: "image",
+    alt_text: "Student speakers addressing an audience from a lectern",
     is_published: true
   },
   {
     id: "g7",
     title: "TVC Event",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1loYVFN1_qgknYdrPYnugGaOpyvYG_vtq",
+    media_url: "/gallery/tvc-event-1.jpg",
     media_type: "image",
+    alt_text: "Voyage Club members gathered for a formal group photograph",
     is_published: true
   },
   {
     id: "g8",
     title: "TVC Workshop",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=1CjfZz5nXRrjgRWMczYArw2XhyjJcf_hu",
+    media_url: "/gallery/tvc-workshop-2.jpg",
     media_type: "image",
+    alt_text: "Club representatives presenting a signed recognition plaque",
     is_published: true
   },
   {
     id: "g9",
     title: "500 Members",
     category: "Milestone",
-    media_url: "https://drive.google.com/uc?export=view&id=1nbAE4S0LiHKmk0xU4o3jAGT_J5E5plAT",
+    media_url: "/gallery/members-milestone.jpg",
     media_type: "image",
+    alt_text: "Voyage Club milestone celebration with members",
     is_published: true
   },
   {
     id: "g10",
     title: "TVC Event",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1RkSIKm2KqUKWiPnBg_OdqGxXf5LBbJXh",
+    media_url: "/gallery/tvc-event-2.jpg",
     media_type: "image",
+    alt_text: "Students in a planning session with trophies displayed on the table",
     is_published: true
   },
   {
     id: "g11",
     title: "TVC Fest",
     category: "Event",
-    media_url: "https://drive.google.com/uc?export=view&id=1fEzFxOb4yXi0a3IcJJhMBJ5UOqKLLcLf",
+    media_url: "/gallery/tvc-fest-2.jpg",
     media_type: "image",
+    alt_text: "Performers and presenters on stage during a club program",
     is_published: true
   },
   {
     id: "g12",
     title: "TVC Workshop",
     category: "Workshop",
-    media_url: "https://drive.google.com/uc?export=view&id=1hZt0L0cLQv7bRs4rJHPT0I0CQ7GVXrGO",
+    media_url: "/gallery/tvc-workshop-3.jpg",
     media_type: "image",
+    alt_text: "Voyage Club members standing together at a campus program",
     is_published: true
   }
 ];

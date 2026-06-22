@@ -1,6 +1,7 @@
 # The Voyage Club MVP
 
-This folder now contains a Next.js + TypeScript MVP alongside the original static HTML files.
+This folder contains the active Next.js + TypeScript application. The retired static
+HTML prototype has been removed.
 
 ## Remaining implementation
 
@@ -24,11 +25,15 @@ Open `http://localhost:3000`.
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY`
-4. Run `supabase/schema.sql` in the Supabase SQL editor.
+4. Apply the SQL files in `supabase/migrations/`.
 5. Create an auth user for the admin.
 6. Add that user ID to `public.admin_users`.
 
-Without Supabase env vars, public forms run in demo mode and the admin page shows setup instructions.
+Without Supabase env vars, production submissions fail safely. Local demo-mode success
+requires `NEXT_PUBLIC_ENABLE_DEMO_DATA=true`.
+
+Next.js 16 uses `proxy.ts` for Supabase session refresh. Do not create a duplicate
+`middleware.ts`.
 
 ## Asset slots still needed
 
@@ -36,7 +41,7 @@ Without Supabase env vars, public forms run in demo mode and the admin page show
 - About/story photograph
 - Event posters
 - Team portraits
-- Gallery images and recap videos
+- Recap videos
 - Sponsor logos
 - Official club email and social links
 
