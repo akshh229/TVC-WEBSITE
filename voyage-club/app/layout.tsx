@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Outfit, Poppins } from "next/font/google";
 import "./globals.css";
+import { BackgroundVideo } from "@/components/background-video";
 import { SiteInteractions } from "@/components/site-interactions";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -44,11 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${montserrat.variable} ${outfit.variable} ${poppins.variable}`}>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
-        <div className="site-bg-video" aria-hidden="true">
-          <video autoPlay loop muted playsInline preload="metadata">
-            <source src="/backgrounds/grainient-background.webm" type="video/webm" />
-          </video>
-        </div>
+        <BackgroundVideo />
         <SiteInteractions />
         <SiteHeader />
         <main id="main-content">{children}</main>

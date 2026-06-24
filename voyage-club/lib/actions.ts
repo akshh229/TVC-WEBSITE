@@ -54,6 +54,9 @@ const contentPaths: Record<AdminContentTable, string[]> = {
 
 const publicRateLimitWindowMs = 60_000;
 const publicRateLimitMax = 6;
+// Process-local fallback used only when Supabase is not configured (local/demo).
+// Production rate limiting runs through the consume_rate_limit RPC so the
+// counter is shared across all serverless instances.
 const publicSubmissionAttempts = new Map<string, { count: number; resetAt: number }>();
 
 function validationFailure(error: z.ZodError): ActionResult {
@@ -71,11 +74,14 @@ function databaseFailure(): ActionResult {
   };
 }
 
-async function publicRateLimit(formName: keyof typeof publicTableLabels): Promise<ActionResult | null> {
-  const headerList = await headers();
-  const forwardedFor = headerList.get("x-forwarded-for")?.split(",")[0]?.trim();
-  const ip = forwardedFor || headerList.get("x-real-ip") || "unknown";
-  const key = `${formName}:${ip}`;
+function rateLimited(): ActionResult {
+  return {
+    ok: false,
+    message: "Too many submissions from this connection. Please wait a minute and try again."
+  };
+}
+
+function memoryRateLimit(key: string): ActionResult | null {
   const now = Date.now();
   const current = publicSubmissionAttempts.get(key);
 
@@ -84,15 +90,34 @@ async function publicRateLimit(formName: keyof typeof publicTableLabels): Promis
     return null;
   }
 
-  if (current.count >= publicRateLimitMax) {
-    return {
-      ok: false,
-      message: "Too many submissions from this connection. Please wait a minute and try again."
-    };
-  }
+  if (current.count >= publicRateLimitMax) return rateLimited();
 
   current.count += 1;
   return null;
+}
+
+async function publicRateLimit(formName: keyof typeof publicTableLabels): Promise<ActionResult | null> {
+  const headerList = await headers();
+  const forwardedFor = headerList.get("x-forwarded-for")?.split(",")[0]?.trim();
+  const ip = forwardedFor || headerList.get("x-real-ip") || "unknown";
+  const key = `${formName}:${ip}`;
+
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) return memoryRateLimit(key);
+
+  const { data, error } = await supabase.rpc("consume_rate_limit", {
+    p_key: key,
+    p_max: publicRateLimitMax,
+    p_window_seconds: publicRateLimitWindowMs / 1000
+  });
+
+  // Fail open on infrastructure errors so a transient DB issue never blocks
+  // legitimate submissions; only a definitive `false` means the limit is hit.
+  if (error) {
+    console.error("Rate limit check failed", { code: error.code });
+    return null;
+  }
+  return data === false ? rateLimited() : null;
 }
 
 function allowDemoData() {
@@ -248,12 +273,19 @@ async function uploadImage(formData: FormData, folder: string): Promise<UploadRe
   const file = formData.get("media_file");
   if (!(file instanceof File) || file.size === 0) return null;
 
-  const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp", "image/avif"]);
-  if (!allowedTypes.has(file.type)) throw new Error("UNSUPPORTED_MEDIA");
+  const extensionByType: Record<string, string> = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp",
+    "image/avif": "avif"
+  };
+  const extension = extensionByType[file.type];
+  if (!extension) throw new Error("UNSUPPORTED_MEDIA");
   if (file.size > 5 * 1024 * 1024) throw new Error("MEDIA_TOO_LARGE");
 
+  // Derive the extension from the validated MIME type, never the client-supplied
+  // filename, so a spoofed name cannot smuggle a different extension onto storage.
   const { service } = await requireAdmin();
-  const extension = file.name.split(".").pop()?.toLowerCase().replace(/[^a-z0-9]/g, "") || "bin";
   const path = `${folder}/${crypto.randomUUID()}.${extension}`;
   const { error } = await service.storage.from("public-site-media").upload(path, file, {
     cacheControl: "3600",
@@ -399,8 +431,3 @@ export async function updateSubmission(
   revalidatePath("/admin");
   return { ok: true, message: "Submission updated." };
 }
-
-// Compatibility exports used by the existing page while the admin UI is migrated.
-export const createEvent = createContent.bind(null, "events");
-export const createTeamMember = createContent.bind(null, "team_members");
-export const createGalleryItem = createContent.bind(null, "gallery_items");
