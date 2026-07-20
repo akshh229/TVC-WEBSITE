@@ -24,9 +24,21 @@ Copy `.env.example` to `.env.local` and configure:
 
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_SECRET_KEY` (preferred) or the legacy `SUPABASE_SERVICE_ROLE_KEY`
 
-The service-role key is server-only and must never use a `NEXT_PUBLIC_` prefix.
+The secret/service-role key is server-only and must never use a `NEXT_PUBLIC_` prefix.
+
+### Optional administrator email alerts
+
+Public submissions always appear in the protected admin dashboard. To also email
+administrators after a submission is stored, configure a verified sender in Resend and add:
+
+- `RESEND_API_KEY`
+- `RESEND_FROM_EMAIL` (for example, `The Voyage Club <notifications@your-domain.com>`)
+- `ADMIN_NOTIFICATION_EMAILS` (comma-separated, up to 50 recipients)
+
+Email delivery is intentionally non-fatal for applicants: a provider outage is logged but
+does not discard or misreport a submission that was already saved in Supabase.
 
 ## Supabase Setup
 

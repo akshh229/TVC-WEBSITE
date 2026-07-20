@@ -24,19 +24,36 @@ export async function getAdminCounts() {
     "events",
     "team_members",
     "gallery_items",
+    "sponsors",
+    "testimonials",
     "contact_inquiries",
     "recruitment_applications",
     "membership_applications",
     "event_registrations"
   ] as const;
 
+  const actionableStatuses: Partial<Record<(typeof tables)[number], readonly string[]>> = {
+    contact_inquiries: ["new"],
+    recruitment_applications: ["pending"],
+    membership_applications: ["pending"],
+    event_registrations: ["registered", "waitlisted"]
+  };
+
   const entries = await Promise.all(
     tables.map(async (table) => {
-      const { count } = await service.from(table).select("id", { count: "exact", head: true });
-      return [table, count ?? 0] as const;
+      const statuses = actionableStatuses[table];
+      const [totalResult, actionableResult] = await Promise.all([
+        service.from(table).select("id", { count: "exact", head: true }),
+        statuses
+          ? service.from(table).select("id", { count: "exact", head: true }).in("status", [...statuses])
+          : Promise.resolve({ count: null })
+      ]);
+      return [table, {
+        total: totalResult.count ?? 0,
+        actionable: statuses ? actionableResult.count ?? 0 : null
+      }] as const;
     })
   );
 
-  return Object.fromEntries(entries) as Record<(typeof tables)[number], number>;
+  return Object.fromEntries(entries) as Record<(typeof tables)[number], { total: number; actionable: number | null }>;
 }
-

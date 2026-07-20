@@ -1431,6 +1431,7 @@ a.gallery-tape-card{color:inherit;display:block;text-decoration:none}
 .metric:hover{border-color:rgba(31,122,77,.3);transform:translateY(-2px)}
 .metric strong{color:var(--purple);font-family:var(--font-display),system-ui,sans-serif;font-size:2rem;line-height:1}
 .metric span{color:var(--gray-1);font-size:.8rem;text-transform:capitalize}
+.metric small{color:var(--gray-2);font-size:.72rem;line-height:1.4}
 
 /* ── Admin login ── */
 .admin-login-layout{align-items:center;display:grid;gap:48px;grid-template-columns:1fr 1fr}
@@ -1460,6 +1461,9 @@ a.gallery-tape-card{color:inherit;display:block;text-decoration:none}
 .record-details div{display:grid;gap:2px}
 .record-details dt{color:var(--gray-2);font-size:.78rem;font-weight:700;text-transform:uppercase}
 .record-details dd{color:var(--off-white);margin:0;word-break:break-word}
+.record-details dd a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.submission-summary{display:grid;gap:3px}
+.submission-summary small{color:var(--gray-2);font-size:.72rem;font-weight:500}
 
 /* ── Danger zone ── */
 .danger-zone{border-top:1px solid rgba(239,68,68,.2);display:flex;justify-content:flex-end}

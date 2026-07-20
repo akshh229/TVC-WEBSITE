@@ -230,6 +230,24 @@ function submissionDetails(record: AdminRecord) {
   return Object.entries(record).filter(([key, value]) => !ignored.has(key) && value !== null && value !== "");
 }
 
+function readableDate(value: unknown) {
+  if (typeof value !== "string") return "Unknown time";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? value
+    : new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short" }).format(date);
+}
+
+function SubmissionValue({ field, value }: { field: string; value: unknown }) {
+  const text = typeof value === "object" ? JSON.stringify(value) : String(value);
+  if (field === "email") return <a href={`mailto:${encodeURIComponent(text)}`}>{text}</a>;
+  if (field === "phone") {
+    const telephone = text.replace(/[^+\d]/g, "");
+    return <a href={`tel:${telephone}`}>{text}</a>;
+  }
+  return <>{text}</>;
+}
+
 export function AdminSubmissionPanel({ table, records }: { table: SubmissionTable; records: AdminRecord[] }) {
   const action = updateSubmission.bind(null, table);
   return (
@@ -245,14 +263,17 @@ export function AdminSubmissionPanel({ table, records }: { table: SubmissionTabl
         {records.length ? records.map((record) => (
           <details className="admin-editor" key={record.id}>
             <summary>
-              <span>{primaryLabel(record)}</span>
-              <span className="status-dot">{stringValue(record, "status").replaceAll("_", " ")}</span>
+              <span className="submission-summary">
+                <strong>{primaryLabel(record)}</strong>
+                <small>{readableDate(record.created_at)}</small>
+              </span>
+              <span className={`status-dot${["approved", "accepted", "resolved", "attended"].includes(stringValue(record, "status")) ? " published" : ""}`}>{stringValue(record, "status").replaceAll("_", " ")}</span>
             </summary>
             <dl className="record-details">
               {submissionDetails(record).map(([key, value]) => (
                 <div key={key}>
                   <dt>{key.replaceAll("_", " ")}</dt>
-                  <dd>{typeof value === "object" ? JSON.stringify(value) : String(value)}</dd>
+                  <dd><SubmissionValue field={key} value={value} /></dd>
                 </div>
               ))}
             </dl>

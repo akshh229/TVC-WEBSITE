@@ -6,6 +6,7 @@ import { SmartForm } from "@/components/forms";
 import { signInAdmin, signOutAdmin } from "@/lib/actions";
 import { getAdminContent, getAdminCounts, getAdminSubmissions } from "@/lib/admin-data";
 import { getCurrentUser, isCurrentUserAdmin } from "@/lib/auth";
+import { hasAdminNotificationEnv } from "@/lib/notifications";
 import { hasSupabaseAdminEnv, hasSupabaseEnv } from "@/lib/supabase/server";
 import type { AdminContentTable, SubmissionTable } from "@/lib/types";
 
@@ -108,10 +109,22 @@ export default async function AdminPage({
             <section className="metric-grid" aria-label="Content and submission totals">
               {Object.entries(counts).map(([label, count]) => (
                 <Link className="metric" href={`/admin?view=${label}`} key={label}>
-                  <strong>{count}</strong>
+                  <strong>{count.actionable ?? count.total}</strong>
                   <span>{label.replaceAll("_", " ")}</span>
+                  <small>{count.actionable === null ? `${count.total} total` : `${count.actionable} awaiting review · ${count.total} total`}</small>
                 </Link>
               ))}
+            </section>
+            <section className="admin-panel">
+              <div className="admin-panel-heading">
+                <h2>Notifications</h2>
+                <span className={`status-dot${hasAdminNotificationEnv() ? " published" : ""}`}>
+                  {hasAdminNotificationEnv() ? "Email alerts on" : "Email alerts off"}
+                </span>
+              </div>
+              <p>{hasAdminNotificationEnv()
+                ? "Configured administrators receive an email after every successfully stored public submission."
+                : "Add the Resend notification variables to enable administrator email alerts. Dashboard receipt remains active."}</p>
             </section>
             <section className="admin-panel">
               <h2>Launch checklist</h2>
@@ -130,4 +143,3 @@ export default async function AdminPage({
     </div>
   );
 }
-

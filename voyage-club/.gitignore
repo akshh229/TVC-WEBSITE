@@ -11,6 +11,9 @@ out/
 .env.*.local
 !.env.example
 
+# Logs
+dev.log
+
 # Test output
 coverage/
 playwright-report/
