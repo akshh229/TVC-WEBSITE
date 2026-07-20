@@ -1,0 +1,94 @@
+flowchart LR
+  User["Visitor / Admin browser"]
+  Vercel["Next.js 16 app on Vercel"]
+  Proxy["proxy.ts\nSupabase session refresh"]
+  Layout["app/layout.tsx\nGlobal shell"]
+
+  subgraph Workspace["D:/TVC WEBSITE"]
+    VC["voyage-club\nprimary MVP app"]
+    Legacy["tvc website\nolder template/prototype app"]
+    Skills[".agents / skills-lock.json"]
+  end
+
+  subgraph PublicRoutes["voyage-club public routes"]
+    PublicHub["public route group"]
+    Home["/"]
+    About["/about"]
+    Team["/team"]
+    Events["/events"]
+    Gallery["/gallery"]
+    Recruitment["/recruitment"]
+    Membership["/membership"]
+    Contact["/contact"]
+    Privacy["/privacy"]
+    Dashboard["/dashboard\nPhase 2 info page"]
+  end
+
+  subgraph AdminRoutes["voyage-club admin route"]
+    AdminPage["/admin"]
+    AdminPanel["components/admin-panel.tsx"]
+    SmartForm["components/forms.tsx\nSmartForm"]
+  end
+
+  subgraph ServerLib["Server-side lib layer"]
+    Data["lib/data.ts\npublished reads"]
+    Actions["lib/actions.ts\nserver actions"]
+    AdminData["lib/admin-data.ts\nadmin reads"]
+    Auth["lib/auth.ts\nadmin checks"]
+    Validation["lib/validation.ts\nZod schemas"]
+    Notifications["lib/notifications.ts\nResend alerts"]
+    SupabaseServer["lib/supabase/server.ts\nSSR + service clients"]
+  end
+
+  subgraph Supabase["Supabase"]
+    AuthSvc["Auth users"]
+    DB["Postgres tables + RLS"]
+    Storage["public-site-media bucket"]
+    RPC["consume_rate_limit RPC"]
+  end
+
+  User --> Vercel --> Proxy --> Layout
+  Layout --> PublicHub
+  Layout --> AdminPage
+
+  PublicHub --> Home
+  PublicHub --> About
+  PublicHub --> Team
+  PublicHub --> Events
+  PublicHub --> Gallery
+  PublicHub --> Recruitment
+  PublicHub --> Membership
+  PublicHub --> Contact
+  PublicHub --> Privacy
+  PublicHub --> Dashboard
+  PublicHub --> Data
+  PublicHub --> SmartForm
+  SmartForm --> Actions
+
+  AdminPage --> Auth
+  AdminPage --> AdminData
+  AdminPage --> AdminPanel
+  AdminPanel --> SmartForm
+  AdminPanel --> Actions
+
+  Data --> SupabaseServer
+  Actions --> Validation
+  Actions --> SupabaseServer
+  Actions --> Notifications
+  Actions --> RPC
+  AdminData --> Auth
+  AdminData --> SupabaseServer
+  Auth --> SupabaseServer
+
+  SupabaseServer --> AuthSvc
+  SupabaseServer --> DB
+  SupabaseServer --> Storage
+  Notifications --> AdminPage
+
+  VC --> Home
+  VC --> AdminPage
+  VC --> Data
+  VC --> Actions
+  VC --> DB
+  Legacy -. "separate older app" .-> RootNote["same workspace, separate package"]
+  Skills -. "local agent metadata" .-> RootNote

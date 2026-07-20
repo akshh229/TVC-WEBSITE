@@ -20,6 +20,8 @@ const contentSecurityPolicy = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // 127.0.0.1 is used by the Playwright E2E dev server; allow its HMR requests.
+  allowedDevOrigins: ["127.0.0.1"],
   images: {
     remotePatterns: [
       {
