@@ -4,13 +4,14 @@ import { cookies } from "next/headers";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseAdminKey = process.env.SUPABASE_SECRET_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 export function hasSupabaseEnv() {
   return Boolean(supabaseUrl && supabaseKey);
 }
 
 export function hasSupabaseAdminEnv() {
-  return Boolean(hasSupabaseEnv() && process.env.SUPABASE_SERVICE_ROLE_KEY);
+  return Boolean(hasSupabaseEnv() && supabaseAdminKey);
 }
 
 export async function createSupabaseServerClient() {
@@ -48,7 +49,7 @@ export async function createSupabaseServerClient() {
 export function createSupabaseServiceClient() {
   if (!hasSupabaseAdminEnv()) return null;
 
-  return createClient(supabaseUrl!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
+  return createClient(supabaseUrl!, supabaseAdminKey!, {
     auth: {
       persistSession: false
     }

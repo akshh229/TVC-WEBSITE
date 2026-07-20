@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { requireAdmin } from "./auth";
+import { sendAdminSubmissionNotification } from "./notifications";
 import { createSupabaseServerClient, createSupabaseServiceClient, hasSupabaseEnv } from "./supabase/server";
 import type { ActionResult, AdminContentTable, SubmissionTable } from "./types";
 import {
@@ -44,6 +45,8 @@ const contentLabels: Record<AdminContentTable, string> = {
   testimonials: "Testimonial"
 };
 
+const contentTableNames = new Set<AdminContentTable>(Object.keys(adminSchemas) as AdminContentTable[]);
+
 const contentPaths: Record<AdminContentTable, string[]> = {
   events: ["/", "/events"],
   team_members: ["/team"],
@@ -58,6 +61,10 @@ const publicRateLimitMax = 6;
 // Production rate limiting runs through the consume_rate_limit RPC so the
 // counter is shared across all serverless instances.
 const publicSubmissionAttempts = new Map<string, { count: number; resetAt: number }>();
+
+function isAdminContentTable(table: unknown): table is AdminContentTable {
+  return typeof table === "string" && contentTableNames.has(table as AdminContentTable);
+}
 
 function validationFailure(error: z.ZodError): ActionResult {
   return {
@@ -102,7 +109,7 @@ async function publicRateLimit(formName: keyof typeof publicTableLabels): Promis
   const ip = forwardedFor || headerList.get("x-real-ip") || "unknown";
   const key = `${formName}:${ip}`;
 
-  const supabase = await createSupabaseServerClient();
+  const supabase = createSupabaseServiceClient();
   if (!supabase) return memoryRateLimit(key);
 
   const { data, error } = await supabase.rpc("consume_rate_limit", {
@@ -144,7 +151,8 @@ async function insertPublic(
   const supabase = await createSupabaseServerClient();
   if (!supabase) return databaseFailure();
 
-  const { error } = await supabase.from(table).insert(payload);
+  const id = crypto.randomUUID();
+  const { error } = await supabase.from(table).insert({ id, ...payload });
   if (error) {
     if (error.code === "23505") {
       return { ok: false, message: "A matching submission already exists." };
@@ -152,6 +160,9 @@ async function insertPublic(
     console.error("Public submission failed", { table, code: error.code });
     return databaseFailure();
   }
+
+  revalidatePath("/admin");
+  await sendAdminSubmissionNotification({ id, table, payload });
 
   return {
     ok: true,
@@ -311,6 +322,10 @@ async function saveContent(
   formData: FormData,
   mode: "create" | "update"
 ): Promise<ActionResult> {
+  if (!isAdminContentTable(table)) {
+    return { ok: false, message: "Choose a valid admin section." };
+  }
+
   const schema = adminSchemas[table];
   const parsed = schema.safeParse(formDataObject(formData));
   if (!parsed.success) return validationFailure(parsed.error);
@@ -379,6 +394,8 @@ export async function updateContent(
 }
 
 export async function deleteContent(table: AdminContentTable, formData: FormData) {
+  if (!isAdminContentTable(table)) return;
+
   const parsed = z.object({ id: z.string().uuid(), media_path: z.string().optional() }).safeParse(formDataObject(formData));
   if (!parsed.success) return;
 
@@ -399,11 +416,21 @@ const allowedSubmissionStatuses: Record<SubmissionTable, readonly string[]> = {
   event_registrations: ["registered", "waitlisted", "cancelled", "attended", "no_show"]
 };
 
+const submissionTableNames = new Set<SubmissionTable>(Object.keys(allowedSubmissionStatuses) as SubmissionTable[]);
+
+function isSubmissionTable(table: unknown): table is SubmissionTable {
+  return typeof table === "string" && submissionTableNames.has(table as SubmissionTable);
+}
+
 export async function updateSubmission(
   table: SubmissionTable,
   _: ActionResult | null,
   formData: FormData
 ): Promise<ActionResult> {
+  if (!isSubmissionTable(table)) {
+    return { ok: false, message: "Choose a valid review queue." };
+  }
+
   const parsed = z
     .object({
       id: z.string().uuid(),
